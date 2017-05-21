@@ -1,0 +1,14 @@
+{% extends "personal/header.html" %}
+
+{% block title %}Contact - {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<h2>Contact</h2>
+<form role="form" action="" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" name="button">Submit</button>
+</form>
+
+{% endblock %}
