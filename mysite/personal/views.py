@@ -8,9 +8,6 @@ from .forms  import ContactForm
 def index(request):
     return render(request, 'personal/home.html')
 
-#def contact(request):
-#    form_class = ContactForm
-#    return render(request, 'personal/contact.html', {'form': form_class,})
 
 def contact(request):
     title = "Contact us"
@@ -20,7 +17,7 @@ def contact(request):
         #for key, value in form.cleaned_data.iteritems():
             #print key, value
         form_email = form.cleaned_data.get('contact_email')
-        form_context = form.cleaned_data.get('context')
+        form_context = form.cleaned_data.get('content')
         form_name = form.cleaned_data.get('contact_name')
         subject = 'Hello!'
         from_email = settings.EMAIL_HOST_USER
