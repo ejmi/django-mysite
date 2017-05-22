@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms  import ContactForm
 
@@ -20,7 +20,7 @@ def contact(request):
         #for key, value in form.cleaned_data.iteritems():
             #print key, value
         form_email = form.cleaned_data.get('contact_email')
-        form_context = form.cleaned_data.get('content')
+        form_context = form.cleaned_data.get('context')
         form_name = form.cleaned_data.get('contact_name')
         subject = 'Hello!'
         from_email = settings.EMAIL_HOST_USER
@@ -35,6 +35,7 @@ def contact(request):
                 from_email,
                 to_email,
                 fail_silently=False)
+        return redirect('contact')
     context = {
         'form': form,
         'title': title,
